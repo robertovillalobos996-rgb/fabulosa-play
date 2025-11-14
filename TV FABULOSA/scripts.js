@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{console.log("✅ Fabulosa Play funcionando correctamente");const e=document.querySelectorAll("nav a[href^='#']");e.forEach(a=>{a.addEventListener("click",t=>{t.preventDefault();const r=document.querySelector(a.getAttribute("href"));r&&window.scrollTo({top:r.offsetTop-20,behavior:"smooth"})})})});
