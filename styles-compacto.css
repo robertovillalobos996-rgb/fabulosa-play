@@ -1,0 +1,281 @@
+/* ================================
+   FABULOSA PLAY – STYLES (Carrusel compacto y centrado)
+   ================================ */
+
+:root {
+  --accent: #ff5a3c;
+  --gold: #d4a017;
+  --bg: #07070a;
+  --muted: #b9c2c9;
+  --card: #0f1720;
+}
+
+/* General */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+  background: var(--bg);
+  color: #fff;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Header */
+header {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  z-index: 5;
+}
+
+.header-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.header-video-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.4);
+}
+
+/* Marca / Logo */
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.logo-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.logo-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  gap: 10px;
+  z-index: 2;
+  position: relative;
+}
+
+a.btn {
+  background: var(--accent);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+a.btn:hover {
+  background: #ff7a5b;
+}
+
+/* Main */
+main {
+  max-width: 1200px;
+  margin: 20px auto 120px;
+  padding: 0 18px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Hero */
+.hero {
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 28px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-left {
+  z-index: 2;
+}
+
+.hero h2 {
+  font-size: 42px;
+  margin: 0 0 10px;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 18px;
+  max-width: 520px;
+}
+
+/* Cards */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+}
+
+/* Grid principal */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 22px;
+  margin-top: 18px;
+}
+
+/* Carrusel Swiper */
+.swiper-container {
+  width: 100%;
+  height: 140px; /* Altura baja */
+  border-radius: 10px;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #111;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Imagen completa */
+  background-color: #000; /* Fondo negro */
+}
+
+/* Carrusel centrado y más angosto */
+.carrusel-publicidad {
+  width: 60%; /* más angosto */
+  max-width: 600px;
+  margin: 20px auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+/* Facebook card */
+.facebook-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 12px;
+  padding: 10px;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.3s ease;
+}
+
+.facebook-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  background: transparent;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.facebook-card span {
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.facebook-card:hover {
+  filter: brightness(0.85);
+}
+
+.facebook-card:hover img,
+.facebook-card:hover span {
+  transform: scale(1.2);
+}
+
+/* Botón pantalla completa */
+.fullscreen-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 8px 12px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 5;
+  transition: background 0.3s;
+}
+
+.fullscreen-btn:hover {
+  background: #ff7a5b;
+}
+
+/* Footer */
+footer {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 18px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .swiper-container {
+    height: 120px;
+  }
+  .carrusel-publicidad {
+    width: 90%;
+  }
+}
