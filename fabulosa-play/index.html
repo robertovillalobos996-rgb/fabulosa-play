@@ -1,0 +1,339 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>FABULOSA PLAY – LA RADIO FIESTA</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="styles-compacto.css" />
+<script src="scripts.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<style>
+
+/* -------------------- CANALES -------------------- */
+.grid-canales{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+
+.tile{
+  position:relative;
+  border-radius:18px;
+  background:#0f141a;
+  border:1px solid #222a33;
+  padding:14px;
+  cursor:pointer;
+  transition:.18s;
+}
+
+.tile:hover{
+  transform:translateY(-2px) scale(1.02);
+  box-shadow:0 10px 30px #ffffff33;
+  border-color:#2b3642;
+}
+
+.tile .inner{
+  display:grid;
+  place-items:center;
+  aspect-ratio:16/11;
+  border-radius:12px;
+  background:#000;
+  overflow:hidden;
+}
+
+.tile img{
+  max-width:85%;
+  max-height:85%;
+  object-fit:contain;
+  filter:drop-shadow(0 2px 8px #0006);
+}
+
+.tile .name{
+  font-size:.9rem;
+  text-align:center;
+  margin-top:10px;
+  color:#e5ecf3;
+}
+
+/* -------------------- PUBLICIDAD -------------------- */
+.swiper-publicidad{
+  width:100%;
+  height:250px;
+  border-radius:12px;
+  overflow:hidden;
+  margin-top:18px;
+  position:relative;
+}
+
+.swiper-publicidad .swiper-slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+/* -------------------- LOGO NUEVO -------------------- */
+.logo-img{
+  width:auto!important;
+  height:auto!important;
+}
+
+.logo-img img{
+  content:url("static/uploads/logo fabulosa play.png");
+  width:300px!important;
+  height:auto!important;
+  object-fit:contain!important;
+  animation:lp 4s ease-in-out 1, lf 6s ease-in-out infinite;
+  transition:.7s;
+}
+
+@keyframes lp{
+  0%,100%{transform:scale(1);filter:drop-shadow(0 0 8px #fff4)}
+  50%{transform:scale(1.06);filter:drop-shadow(0 0 22px #fff)}
+}
+
+@keyframes lf{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
+
+.logo-img img:hover{
+  transform:scale(1.09);
+  filter:drop-shadow(0 0 28px #fff);
+}
+
+/* -------------------- FUTV -------------------- */
+#futv-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:#000d;
+  align-items:center;
+  justify-content:center;
+}
+
+#futv-overlay .msg{
+  background:#111;
+  padding:26px;
+  border-radius:12px;
+  border:2px solid #ff5a3c;
+  color:#fff;
+  width:90%;
+  max-width:420px;
+  text-align:center;
+  box-shadow:0 0 16px #000;
+}
+
+#futv-overlay input{
+  width:80%;
+  padding:10px;
+  margin-top:14px;
+  border:none;
+  border-radius:8px;
+  text-align:center;
+}
+
+#futv-overlay button{
+  background:#ff5a3c;
+  border:none;
+  padding:10px 22px;
+  border-radius:8px;
+  color:#fff;
+  font-weight:700;
+  margin-top:12px;
+  cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- -------------------- VIDEO DE FONDO -------------------- -->
+<div class="header-video-bg">
+  <video autoplay muted loop playsinline preload="auto">
+    <source src="static/uploads/VIDEOS/Alexius Tv (6).mp4" type="video/mp4">
+  </video>
+</div>
+
+<header>
+  <div class="brand">
+    <div class="logo-img"><img alt="Logo Fabulosa Play" /></div>
+    <div>
+      <h1>FABULOSA PLAY</h1>
+      <div style="font-size:13px;color:var(--muted)">LA RADIO FIESTA</div>
+    </div>
+  </div>
+
+  <nav>
+    <a class="btn" href="#inicio">Inicio</a>
+    <a class="btn" href="#canales">Fabulosa Play</a>
+    <a class="btn" href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main id="inicio">
+<div class="grid">
+
+<section>
+
+<!-- -------------------- TV -------------------- -->
+<div class="card" style="margin-bottom:18px;position:relative">
+  <iframe id="videoPlayer" src="https://ssh101.com/securelive/index.php?id=fabulosa"
+  frameborder="0" width="100%" height="480" allowfullscreen style="border:none;border-radius:8px"></iframe>
+  <button class="fullscreen-btn" onclick="openFullscreen()">Pantalla Completa</button>
+</div>
+
+<!-- -------------------- RADIO -------------------- -->
+<div class="card" style="margin-bottom:18px">
+  <div style="font-weight:700;margin-bottom:6px">RADIO FABULOSA ROMÁNTICA</div>
+  <iframe src="https://dattavolt.com/cp/widgets/player/single/?p=8030"
+  height="110" width="100%" scrolling="no"
+  style="border:none;border-radius:8px"></iframe>
+</div>
+
+<!-- -------------------- CANALES (TÍTULO) -------------------- -->
+<div class="card" id="canales">
+<h3 style="display:flex;align-items:center;gap:10px;font-size:1.8rem;font-weight:800;color:#ff5a3c;margin-bottom:20px;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#ff5a3c" viewBox="0 0 16 16">
+    <path d="M16 8A 8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093a.5.5 0 0 0-.79.407v4.999a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+  </svg>
+  FABULOSA PLAY
+</h3>
+
+</div></section>
+
+<!-- -------------------- COLUMNA DERECHA -------------------- -->
+<aside>
+
+<!-- -------------------- FACEBOOK NUEVO (350px) -------------------- -->
+<div class="card">
+<h3>Facebook – PSC Informa</h3>
+
+<div id="fb-root"></div>
+
+<div class="fb-page"
+     data-href="https://www.facebook.com/profile.php?id=100089994882915"
+     data-tabs="timeline"
+     data-width="100%"
+     data-height="350"
+     data-small-header="false"
+     data-adapt-container-width="true"
+     data-hide-cover="false"
+     data-show-facepile="false">
+</div>
+
+<script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v19.0">
+</script>
+</div>
+
+<!-- -------------------- PUBLICIDAD -------------------- -->
+<div class="card">
+  <h3>Publicidad</h3>
+  <div class="swiper swiper-publicidad">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="static/uploads/publidad/08898e33-4c9e-49e3-8500-7c7bdefc5eaa.jpg"></div>
+      <div class="swiper-slide"><img src="static/uploads/publidad/571323340_905148195828335_1330059425689821987_n.jpg"></div>
+      <div class="swiper-slide"><img src="static/uploads/publidad/WhatsApp Image 2025-11-07 at 12.24.40 PM.jpeg"></div>
+      <div class="swiper-slide"><img src="static/uploads/publidad/0ee12808-e0e4-4d0b-9e95-dfc0c73624cc.jpg"></div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</div>
+
+<!-- -------------------- CONTACTO -------------------- -->
+<div class="card" style="margin-top:18px">
+<h3 id="contacto">Contacto</h3>
+
+<form id="contact-form">
+  <input type="text" id="name" placeholder="Nombre completo" required>
+  <input type="email" id="email" placeholder="tu@email.com" required>
+  <textarea id="message" rows="4" placeholder="Tu mensaje" required></textarea>
+  <button type="submit">Enviar mensaje</button>
+</form>
+
+<p style="color:var(--muted);font-size:13px;margin-top:12px">
+  <strong>Email:</strong> pscinforma36@gmail.com<br>
+  <strong>WhatsApp:</strong> 6126-6261
+</p>
+</div>
+
+</aside></div></main>
+
+<!-- -------------------- FUTV -------------------- -->
+<div id="futv-overlay">
+  <div class="msg">
+    <h3>FUTV</h3>
+    <p>Este canal requiere un código válido <strong>PLAY</strong>.</p>
+    <p>Envíe su comprobante de pago por SINPE al <strong>6126-6261</strong>.</p>
+    <input type="password" id="futv-code" placeholder="Ingrese su código">
+    <div>
+      <button onclick="verificarCodigo()">Enviar</button>
+      <button onclick="cerrarFutv()" style="background:#333;margin-left:8px">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<footer>© 2025 Fabulosa PLAY – La Radio Fiesta. Todos los derechos reservados.</footer>
+
+<!-- -------------------- SCRIPTS -------------------- -->
+
+<script>
+/* PUBLICIDAD */
+const swiperPublicidad = new Swiper('.swiper-publicidad',{
+  loop:true,
+  autoplay:{delay:5000,disableOnInteraction:false},
+  navigation:{
+    nextEl:'.swiper-button-next',
+    prevEl:'.swiper-button-prev'
+  }
+});
+
+/* FORMULARIO DE CONTACTO */
+document.getElementById('contact-form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const n=name.value.trim(),em=email.value.trim(),m=message.value.trim();
+  window.location.href='mailto:pscinfo36@gmail.com?subject='+
+  encodeURIComponent('Contacto web - '+n)+
+  '&body='+encodeURIComponent('Nombre: '+n+'\nEmail: '+em+'\n\nMensaje:\n'+m);
+});
+
+/* TV FULLSCREEN */
+function openFullscreen(){
+  let i=document.getElementById("videoPlayer");
+  if(i.requestFullscreen)i.requestFullscreen();
+  else if(i.webkitRequestFullscreen)i.webkitRequestFullscreen();
+  else if(i.msRequestFullscreen)i.msRequestFullscreen();
+}
+
+/* BLOQUE FUTV */
+function bloqueoFutv(e){
+  e.preventDefault();
+  document.getElementById('futv-overlay').style.display='flex';
+}
+
+function cerrarFutv(){
+  document.getElementById('futv-overlay').style.display='none';
+}
+
+function verificarCodigo(){
+  let code=document.getElementById('futv-code').value.trim().toUpperCase();
+  if(code.startsWith("PLAY") && code.length > 4){
+    window.open("static/uploads/CANALES/futv.m3u8","_blank");
+    cerrarFutv();
+  } else {
+    alert("Código no válido.");
+  }
+}
+</script>
+
+</body>
+</html>
